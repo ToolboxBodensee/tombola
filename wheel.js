@@ -1,7 +1,9 @@
 var angle = 0;
 var speed = 0;
 
-const RESULTS = 2;
+const RESULTS = 3;
+const text = ["Gew", "Verl", "Nichts"];
+const colors = ["#FF0000", "#00FF00", "#0000FF"];
 
 function draw(angle)
 {
@@ -17,13 +19,20 @@ function draw(angle)
     var width = ctx.canvas.width /2;
     var height = ctx.canvas.height /2;
 
-    for( var counter=0; counter<RESULTS; counter++)
-    {
-        console.log(angle);
-        ctx.moveTo(width,height);
-        ctx.lineTo((height*0.8 * Math.sin(2*Math.PI/RESULTS*counter)) + width,(height*0.8*Math.cos(2*Math.PI/RESULTS*counter) + height));
+    var last_angle = Math.PI/2;
+
+    for( var counter=1; counter<=RESULTS; counter++) {
+        ctx.moveTo(width, height);
+        ctx.beginPath();
+        ctx.lineTo(width, height);
+        ctx.arc(width, height, height * 0.8, last_angle, 2 * Math.PI / RESULTS + last_angle);
+        ctx.lineTo(width, height);
+        ctx.fillStyle = colors[counter-1];
+        last_angle += 2 * Math.PI / RESULTS;
+        ctx.fill();
     }
-    ctx.arc(width,height,height*0.8,0,2*Math.PI);
+    ctx.beginPath();
+    ctx.lineWidth = 4;
     ctx.moveTo(width,height);
     ctx.lineTo((height*0.8 * Math.sin(angle)) + width,(height*0.8*Math.cos(angle) + height));
     ctx.stroke();
@@ -54,6 +63,5 @@ $("#start").click(function(){
 function handleAngle(angle){
     angle %= 360;
     angle = Math.floor(angle/(360/RESULTS));
-    var text = ["Gew", "Verl"];
     alert(text[angle]);
 }
