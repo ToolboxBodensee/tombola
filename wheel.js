@@ -2,7 +2,8 @@ var angle = 0;
 var speed = 0;
 
 const RESULTS = 4;
-const text = ["Gewonnen", "Verloren", "Weiterer Zustand", "Vierter Zustand"];
+const captions = ["Gewonnen", "Verloren", "Weiterer Zustand", "Vierter Zustand"];
+const text = ["Toll", "Versagt", "noch mehr Text", "Keine Kreativität"];
 const colors = ["#F44336", "#4CAF50", "#2196F3", "#FF9800"];
 
 function draw(angle)
@@ -20,12 +21,13 @@ function draw(angle)
     var height = ctx.canvas.height /2;
 
     var last_angle = Math.PI/2;
+    var size = height<width?height*0.8:width*0.8;
 
     for( var counter=1; counter<=RESULTS; counter++) {
         ctx.moveTo(width, height);
         ctx.beginPath();
         ctx.lineTo(width, height);
-        ctx.arc(width, height, height * 0.8, last_angle, 2 * Math.PI / RESULTS + last_angle);
+        ctx.arc(width, height, size, last_angle, 2 * Math.PI / RESULTS + last_angle);
         ctx.lineTo(width, height);
         ctx.fillStyle = colors[counter-1];
         last_angle += 2 * Math.PI / RESULTS;
@@ -34,7 +36,7 @@ function draw(angle)
     ctx.beginPath();
     ctx.lineWidth = 4;
     ctx.moveTo(width,height);
-    ctx.lineTo((height*0.8 * Math.sin(angle)) + width,(height*0.8*Math.cos(angle) + height));
+    ctx.lineTo((size * Math.sin(angle)) + width,(size*Math.cos(angle) + height));
     ctx.stroke();
 }
 
@@ -63,5 +65,8 @@ $("#start").click(function(){
 function handleAngle(angle){
     angle %= 360;
     angle = Math.floor(angle/(360/RESULTS));
-    alert(text[angle]);
+    $("#mTitle").html(captions[angle]);
+    $("#mBody").html(text[angle]);
+    $("#modalFertig").modal();
+
 }
