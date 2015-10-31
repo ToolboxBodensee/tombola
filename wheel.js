@@ -1,9 +1,9 @@
 var angle = 0;
 var speed = 0;
 
-const RESULTS = 3;
-const text = ["Gew", "Verl", "Nichts"];
-const colors = ["#FF0000", "#00FF00", "#0000FF"];
+const RESULTS = 4;
+const text = ["Gewonnen", "Verloren", "Weiterer Zustand", "Vierter Zustand"];
+const colors = ["#F44336", "#4CAF50", "#2196F3", "#FF9800"];
 
 function draw(angle)
 {
@@ -12,7 +12,7 @@ function draw(angle)
     var c = document.getElementById("canvas");
     var ctx = c.getContext("2d");
 
-    ctx.fillStyle = "#FFFFFF";
+    ctx.fillStyle = "#eee";
     ctx.fillRect(0,0, ctx.canvas.width, ctx.canvas.height);
 
     ctx.beginPath();
