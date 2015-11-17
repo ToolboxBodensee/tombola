@@ -94,7 +94,6 @@ function handleAngle(angle){
         colors.splice(0, 1);
         angles[angles.length-1] += angles[0];
         angles.splice(0, 1);
-        debugger;
     }
     else if(counter==1){
         if(--zwGewinn<=0){
@@ -107,7 +106,6 @@ function handleAngle(angle){
             angles[angles.length-1] += angles[pos];
             angles.splice(pos, 1);
         }
-        debugger;
     }
     else if(counter==2){
         if(--drGewin<=0){
@@ -122,7 +120,6 @@ function handleAngle(angle){
             angles[angles.length-1] += angles[pos];
             angles.splice(pos, 1);
         }
-        debugger;
     }
 
     $("#mTitle").html(captions[counter]);
