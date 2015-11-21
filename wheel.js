@@ -3,21 +3,6 @@ var speed = 0;
 var interval = null;
 var count = 0;
 
-var hG = false;
-var zwGewinn = 4;
-var drGewin = 5;
-
-var RESULTS = 4;
-var captions = ["Hauptgewinn",
-    "Gewonnen", "Gewonnen", "Trostpreis"];
-var text = ["Du hast einen 50$ 3dhubs.com Gutschein gewonnen!",
-    "Du kannst zwischen einem 3d gedruckten Objekt, welches wir entwerfen oder einem Toolbox T-Shirt entscheiden!",
-    "Du kannst ein eigenes T-Shirt bei uns mit einem von dir gewählten Motiv bedrucken lassen",
-    "Du bekommst einen Toolbox Schlüsselanhänger!"];
-var colors = ["#2196F3", "#F44336", "#4CAF50", "#FF5722"];
-var angles = [10, 20, 20, 310];
-var gewinne = [1, 4, 5, -1];
-
 function draw(angle)
 {
     angle = (-angle+180)/180*Math.PI;
