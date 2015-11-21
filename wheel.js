@@ -16,6 +16,7 @@ var text = ["Du hast einen 50$ 3dhubs.com Gutschein gewonnen!",
     "Du bekommst einen Toolbox Schlüsselanhänger!"];
 var colors = ["#2196F3", "#F44336", "#4CAF50", "#FF5722"];
 var angles = [10, 20, 20, 310];
+var gewinne = [1, 4, 5, -1];
 
 function draw(angle)
 {
@@ -87,38 +88,14 @@ function handleAngle(angle){
     }
     counter--;
 
-    if(counter == 0){
-        RESULTS--;
-        captions.splice(0, 1);
-        text.splice(0, 1);
-        colors.splice(0, 1);
-        angles[angles.length-1] += angles[0];
-        angles.splice(0, 1);
-    }
-    else if(counter==1){
-        if(--zwGewinn<=0){
+    if(gewinne[counter]!=-1){
+        if(gewinne[counter]--<=0){
             RESULTS--;
-            var pos = hG?0:1;
-
-            captions.splice(pos, 1);
-            text.splice(pos, 1);
-            colors.splice(pos, 1);
-            angles[angles.length-1] += angles[pos];
-            angles.splice(pos, 1);
-        }
-    }
-    else if(counter==2){
-        if(--drGewin<=0){
-            RESULTS--;
-            pos = hG?1:2;
-            if(zwGewinn==0)
-                pos--;
-
-            captions.splice(pos, 1);
-            text.splice(pos, 1);
-            colors.splice(pos, 1);
-            angles[angles.length-1] += angles[pos];
-            angles.splice(pos, 1);
+            captions.splice(counter, 1);
+            text.splice(counter, 1);
+            colors.splice(counter, 1);
+            angles[angles.length-1] += angles[counter];
+            angles.splice(counter, 1);
         }
     }
 
